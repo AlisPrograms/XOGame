@@ -1,0 +1,630 @@
+﻿<!DOCTYPE html>
+<html lang="ar">
+<!-- All Copyright Reversed To Ali Ayed -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="discription" content="للمرح XO لعبة"/>
+    <meta name="author" content="Ali Ayed"/>
+    <meta name="keywords" content="XO,xogame,xo,لعبة اكس او,xo لعبة,XO لعبة"/>
+    <link rel="icon" href="https://cdn.wallpapersafari.com/30/68/jtm7hn.png"/>
+    <link rel="shortcut" href="https://cdn.wallpapersafari.com/30/68/jtm7hn.png"/>
+    <link rel="apple-touch-icon" href="https://cdn.wallpapersafari.com/30/68/jtm7hn.png"/>
+    <script>cookieChoices = {};</script>
+    <title>XO لعبة</title>
+    <style>
+        /* Design-> Ali Ayed */
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        body{
+            background-image: linear-gradient(to right,brown,black);
+        }
+        .XO{
+            text-align: center;
+            font-size:50px;
+            color:cadetblue;
+            margin-top:20px;
+        }
+        #D{
+            cursor:none;
+            display:none;
+            line-height: 100px;
+            z-index: 1;
+            position: absolute;
+            top:42%;
+            text-align: center;
+            width:100%;
+            height:100px;
+            font-size:50px;
+            background-image:linear-gradient(to left,orange,red,green)
+        }
+        #game{
+            text-align: center;
+            position:absolute;
+            top:45%;
+            left:50%;
+            transform:translate(-50%,-50%);
+        }
+        section{
+            display:flex
+        }
+        button{
+            width:100px;
+            height:100px;
+            font-size: 50px;
+            border:5px solid red;
+            margin:10px;
+            outline:0px;
+            box-shadow: -4px -5px black;
+        }
+        button:hover{
+            border-color:green;
+        }
+        #p{
+            text-align: center;
+            position:absolute;
+            top:85%;
+            left:50%;
+            transform:translate(-50%,-50%);
+        }
+        .shape span{
+            margin-left:50px;
+            margin-right:50px;
+            font-size: 50px;
+        }
+        .shape2 span{
+            padding-left:90px;
+            padding-right:60px;
+            font-size: 50px;
+        }
+        @media screen and (max-width:414px) and (max-height:736px){
+            .shape span{
+                margin-left:30px;
+                margin-right:35px;
+                font-size: 30px;
+            }
+            .shape2 span{
+                padding-left:30px;
+                padding-right:30px;
+                font-size: 30px;
+            }  
+        }
+        img{
+            width:90px;
+            margin:7px;
+            cursor:pointer;
+        }
+        img:hover{
+            filter:invert(100%);
+        }
+        #imgs{
+            text-align: center;
+            position:absolute;
+            top:100%;
+            width:100%;
+            border-top:lightblue dotted 3px;
+            border-bottom:blueviolet dotted 3px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Design-> Ali Ayed -->
+    <h1 class="XO"><span style="color:darkblue">X</span><span style="color:brown"> O </span>لعبة</h1>
+    <h1 id="D">تعادل</h1>
+    <div id="game">
+        <section>
+            <button id="1"></button>
+            <button id="2"></button>
+            <button id="3"></button>
+        </section>
+        <section>
+            <button id="4"></button>
+            <button id="5"></button>
+            <button id="6"></button>
+        </section>
+        <section>
+            <button id="7"></button>
+            <button id="8"></button>
+            <button id="9"></button>
+        </section>
+    </div>
+    <div id="p">
+        <section class="shape">
+            <span style="color:darkblue;">انت</span>
+            <span style="color:yellow;">تعادل</span>
+            <span id="mc" style="color:gray;">الكمبيوتر</span>
+        </section>
+        <section class="shape2">
+            <span id="you" style="color:darkblue;padding-left:70px;">0</span>
+            <span id="equal" style="color:yellow;">0</span>
+            <span id="computer" style="color:gray;padding-left:128px;">0</span> 
+        </section>
+    </div>
+    <div id="imgs">
+        <img id="p2" src="https://cdn0.iconfinder.com/data/icons/battle-royale-color-pop-vol-1/64/duo-512.png" alt="اللعب مع صديق"/>
+    </div>
+    <script>
+        // Programing-> Ali Ayed
+        var g = 0;
+        var v1 = 0;
+        var y = document.getElementById("you");
+        var q = document.getElementById("equal");
+        var c = document.getElementById("computer");
+        var mc = document.getElementById("mc");
+        var d = document.getElementById("D");
+        function computer(){
+            if(b1.innerText == "O" && b2.innerText == "O" && b3.innerText == ""){
+                b3.click();
+            }else if(b2.innerText == "O" && b3.innerText == "O" && b1.innerText == ""){
+                b1.click();
+            }else if(b1.innerText == "O" && b3.innerText == "O" && b2.innerText == ""){
+                b2.click();
+            }else if(b4.innerText == "O" && b5.innerText == "O" && b6.innerText == ""){
+                b6.click();
+            }else if(b4.innerText == "O" && b6.innerText == "O" && b5.innerText == ""){
+                b5.click();
+            }
+            else if(b5.innerText == "O" && b6.innerText == "O" && b4.innerText == ""){
+                b4.click();
+            }
+            else if(b7.innerText == "O" && b8.innerText == "O" && b9.innerText == ""){
+                b9.click();
+            }
+            else if(b8.innerText == "O" && b9.innerText == "O" && b7.innerText == ""){
+                b7.click();
+            }
+            else if(b7.innerText == "O" && b9.innerText == "O" && b8.innerText == ""){
+                b8.click();
+            }
+            else if(b1.innerText == "O" && b4.innerText == "O" && b7.innerText == ""){
+                b7.click();
+            }
+            else if(b7.innerText == "O" && b4.innerText == "O" && b1.innerText == ""){
+                b1.click();
+            }
+            else if(b1.innerText == "O" && b7.innerText == "O" && b4.innerText == ""){
+                b4.click();
+            }
+            else if(b2.innerText == "O" && b5.innerText == "O" && b8.innerText == ""){
+                b8.click();
+            }
+            else if(b2.innerText == "O" && b8.innerText == "O" && b5.innerText == ""){
+                b5.click();
+            }
+            else if(b5.innerText == "O" && b8.innerText == "O" && b2.innerText == ""){
+                b2.click();
+            }
+            else if(b3.innerText == "O" && b9.innerText == "O" && b6.innerText == ""){
+                b6.click();
+            }
+            else if(b6.innerText == "O" && b9.innerText == "O" && b3.innerText == ""){
+                b3.click();
+            }
+            else if(b3.innerText == "O" && b6.innerText == "O" && b9.innerText == ""){
+                b9.click();
+            }
+            else if(b1.innerText == "O" && b9.innerText == "O" && b5.innerText == ""){
+                b5.click();
+            }
+            else if(b5.innerText == "O" && b9.innerText == "O"  && b1.innerText == ""){
+                b1.click();
+            }
+            else if(b1.innerText == "O" && b5.innerText == "O" && b9.innerText == ""){
+                b9.click();
+            }
+            else if(b3.innerText == "O" && b5.innerText == "O" && b7.innerText == ""){
+                b7.click();
+            }
+            else if(b7.innerText == "O" && b3.innerText == "O" && b5.innerText == ""){
+                b5.click();
+            }
+            else if(b7.innerText == "O" && b5.innerText == "O"  && b3.innerText == ""){
+                b3.click();
+            }
+            else if(b1.innerText == "X" && b2.innerText == "X" && b3.innerText == ""){
+                b3.click();
+            }else if(b2.innerText == "X" && b3.innerText == "X" && b1.innerText == ""){
+                b1.click();
+            }else if(b1.innerText == "X" && b3.innerText == "X" && b2.innerText == ""){
+                b2.click();
+            }else if(b4.innerText == "X" && b5.innerText == "X" && b6.innerText == ""){
+                b6.click();
+            }else if(b4.innerText == "X" && b6.innerText == "X" && b5.innerText == ""){
+                b5.click();
+            }
+            else if(b5.innerText == "X" && b6.innerText == "X" && b4.innerText == ""){
+                b4.click();
+            }
+            else if(b7.innerText == "X" && b8.innerText == "X" && b9.innerText == ""){
+                b9.click();
+            }
+            else if(b8.innerText == "X" && b9.innerText == "X" && b7.innerText == ""){
+                b7.click();
+            }
+            else if(b7.innerText == "X" && b9.innerText == "X" && b8.innerText == ""){
+                b8.click();
+            }
+            else if(b1.innerText == "X" && b4.innerText == "X" && b7.innerText == ""){
+                b7.click();
+            }
+            else if(b7.innerText == "X" && b4.innerText == "X" && b1.innerText == ""){
+                b1.click();
+            }
+            else if(b1.innerText == "X" && b7.innerText == "X" && b4.innerText == ""){
+                b4.click();
+            }
+            else if(b2.innerText == "X" && b5.innerText == "X" && b8.innerText == ""){
+                b8.click();
+            }
+            else if(b2.innerText == "X" && b8.innerText == "X" && b5.innerText == ""){
+                b5.click();
+            }
+            else if(b5.innerText == "X" && b8.innerText == "X" && b2.innerText == ""){
+                b2.click();
+            }
+            else if(b3.innerText == "X" && b9.innerText == "X" && b6.innerText == ""){
+                b6.click();
+            }
+            else if(b6.innerText == "X" && b9.innerText == "X" && b3.innerText == ""){
+                b3.click();
+            }
+            else if(b3.innerText == "X" && b6.innerText == "X" && b9.innerText == ""){
+                b9.click();
+            }
+            else if(b1.innerText == "X" && b9.innerText == "X" && b5.innerText == ""){
+                b5.click();
+            }
+            else if(b5.innerText == "X" && b9.innerText == "X"  && b1.innerText == ""){
+                b1.click();
+            }
+            else if(b1.innerText == "X" && b5.innerText == "X" && b9.innerText == ""){
+                b9.click();
+            }
+            else if(b3.innerText == "X" && b5.innerText == "X" && b7.innerText == ""){
+                b7.click();
+            }
+            else if(b7.innerText == "X" && b3.innerText == "X" && b5.innerText == ""){
+                b5.click();
+            }
+            else if(b7.innerText == "X" && b5.innerText == "X"  && b3.innerText == ""){
+                b3.click();
+            }else{
+                for(let i=1;i<100;i++){
+                    let w = "b" + Math.floor(Math.random() * 10);
+                    if(w == "b1" && b1.innerText == ""){
+                        b1.click();
+                        break;
+                    }
+                    else if(w == "b2" && b2.innerText == ""){
+                        b2.click();
+                        break;
+                    }
+                    else if(w == "b3" && b3.innerText == ""){
+                        b3.click();
+                        break;
+                    }
+                    else if(w == "b4" && b4.innerText == ""){
+                        b4.click();
+                        break;
+                    }
+                    else if(w == "b5" && b5.innerText == ""){
+                        b5.click();
+                        break;
+                    }
+                    else if(w == "b6" && b6.innerText == ""){
+                        b6.click();
+                        break;
+                    }
+                    else if(w == "b7" && b7.innerText == ""){
+                        b7.click();
+                        break;
+                    }
+                    else if(w == "b8" && b8.innerText == ""){
+                        b8.click();
+                        break;
+                    }
+                    else if(w == "b9" && b9.innerText == ""){
+                        b9.click();
+                        break;
+                    }
+                }
+            }
+        }
+        onload=()=>{
+            d.style.display="block";d.style.color = "darkblue";d.innerText = "انت تلعب اولا";
+            if(navigator.userAgent.toLowerCase().includes("mobile") == 1 && screen.orientation.type == "landscape-primary" || navigator.userAgent.toLowerCase().includes("mobile") == 1 &&  screen.orientation.type == "landscape-secondary"){
+                alert("برجاء امساك هاتفك عمودي من اجل ان تسطتيع الاستمتاع بلعبة بشكل افضل");
+            }
+            setTimeout(()=>{d.style.display = "none"},1000);
+        }
+        addEventListener("orientationchange",()=>{
+            if(screen.orientation.type == "landscape-primary" || screen.orientation.type == "landscape-secondary"){
+                alert("برجاء امساك هاتفك عمودي من اجل ان تسطتيع الاستمتاع بلعبة بشكل افضل");
+            }   
+        });
+        document.getElementById("p2").onclick=()=>{
+            sessionStorage.clear();
+            location.assign("XO2.html");
+        };
+        var b1 = document.getElementById("1");
+        b1.onclick=()=>{
+            if(g == 0 && b1.innerText == ""){
+                if(v1 == 0){
+                        b1.innerText = "X";
+                        v1 = 1;
+                        b1.style.color = "darkblue";
+                        setTimeout(()=>{computer();},100);
+                    }
+                    else{
+                        b1.innerText = "O";
+                        v1 = 0;
+                        b1.style.color = "brown";
+                }
+            }
+        }
+        var b2 = document.getElementById("2");
+        b2.onclick=()=>{
+            if(g == 0 && b2.innerText == ""){
+                if(v1 == 0){
+                        b2.innerText = "X";
+                        v1 = 1;
+                        b2.style.color = "darkblue";
+                        setTimeout(()=>{computer();},500);
+                    }
+                    else{
+                        b2.innerText = "O";
+                        v1 = 0;
+                        b2.style.color = "brown";
+                }
+            }
+        }
+        var b3 = document.getElementById("3");
+        b3.onclick=()=>{
+            if(g == 0 && b3.innerText == ""){
+                if(v1 == 0){
+                        b3.innerText = "X";
+                        v1 = 1;
+                        b3.style.color = "darkblue";
+                        setTimeout(()=>{computer();},500);
+                    }
+                    else{
+                        b3.innerText = "O";
+                        v1 = 0;
+                        b3.style.color = "brown";
+                }
+            }
+        }
+        var b4 = document.getElementById("4");
+        b4.onclick=()=>{
+            if(g == 0 && b4.innerText == ""){
+                if(v1 == 0){
+                        b4.innerText = "X";
+                        v1 = 1;
+                        b4.style.color = "darkblue";
+                        setTimeout(()=>{computer();},500);
+                    }
+                    else{
+                        b4.innerText = "O";
+                        v1 = 0;
+                        b4.style.color = "brown";
+                }
+            }
+        }
+        var b5 = document.getElementById("5");
+        b5.onclick=()=>{
+            if(g == 0 && b5.innerText == ""){
+                if(v1 == 0){
+                        b5.innerText = "X";
+                        v1 = 1;
+                        b5.style.color = "darkblue";
+                        setTimeout(()=>{computer();},500);
+                    }
+                    else{
+                        b5.innerText = "O";
+                        v1 = 0;
+                        b5.style.color = "brown";
+                }
+            }
+        }
+        var b6 = document.getElementById("6");
+        b6.onclick=()=>{
+            if(g == 0 && b6.innerText == ""){
+                if(v1 == 0){
+                        b6.innerText = "X";
+                        v1 = 1;
+                        b6.style.color = "darkblue";
+                        setTimeout(()=>{computer();},500);
+                    }
+                    else{
+                        b6.innerText = "O";
+                        v1 = 0;
+                        b6.style.color = "brown";
+                }
+            }
+        }
+        var b7 = document.getElementById("7");
+        b7.onclick=()=>{
+            if(g == 0 && b7.innerText == ""){
+                if(v1 == 0){
+                        b7.innerText = "X";
+                        v1 = 1;
+                        b7.style.color = "darkblue";
+                        setTimeout(()=>{computer();},500);
+                    }
+                    else{
+                        b7.innerText = "O";
+                        v1 = 0;
+                        b7.style.color = "brown";
+                }
+            }
+        }
+        var b8 = document.getElementById("8");
+        b8.onclick=()=>{
+            if(g == 0 && b8.innerText == ""){
+                if(v1 == 0){
+                        b8.innerText = "X";
+                        v1 = 1;
+                        b8.style.color = "darkblue";
+                        setTimeout(()=>{computer();},500);
+                    }
+                    else{
+                        b8.innerText = "O";
+                        v1 = 0;
+                        b8.style.color = "brown";
+                }
+            }
+        }
+        var b9 = document.getElementById("9");
+        b9.onclick=()=>{
+            if(g == 0 && b9.innerText == ""){
+                if(v1 == 0){
+                        b9.innerText = "X";
+                        v1 = 1;
+                        b9.style.color = "darkblue";
+                        setTimeout(()=>{computer();},500);
+                    }
+                    else{
+                        b9.innerText = "O";
+                        v1 = 0;
+                        b9.style.color = "brown";
+                }
+            }
+        }
+        function re(){
+            b1.innerText = "";
+            b2.innerText = "";
+            b3.innerText = "";
+            b4.innerText = "";
+            b5.innerText = "";
+            b6.innerText = "";
+            b7.innerText = "";
+            b8.innerText = "";
+            b9.innerText = "";
+            setTimeout(() => {
+                d.style.display = "none"
+                if(v1 == 0){
+                    d.style.display="block";d.style.color = "darkblue";d.innerText = "انت تلعب اولا";
+                }else{
+                    d.style.display="block";d.style.color = "brown";d.innerText = "الكمبيوتر يلعب اولا";
+                }
+                setTimeout(()=>{d.style.display = "none"},1000);
+                g = 0;
+            }, 1000);
+            if(v1 == 1){setTimeout(()=>{computer();},2000);}
+        }
+        var t = setInterval(() => {
+            if(b1.innerText == "X" && b2.innerText == "X" && b3.innerText == "X"){
+                g = 1;
+                d.style.display="block";d.style.color = "darkblue";d.innerText = "انت فزت";
+                you.innerText = parseInt(you.innerText) + 1;
+                re();
+            }
+            else if(b1.innerText == "O" && b2.innerText == "O" && b3.innerText == "O"){
+                g = 1;
+                d.style.display="block";d.style.color = "brown";d.innerText = "الكمبيوتر فاز";
+                c.innerText = parseInt(c.innerText) + 1;
+                re();
+            }
+            else if(b4.innerText == "X" && b5.innerText == "X" && b6.innerText == "X"){
+                g = 1;
+                d.style.display="block";d.style.color = "darkblue";d.innerText = "انت فزت";
+                you.innerText = parseInt(you.innerText) + 1;
+                re();
+            }
+            else if(b4.innerText == "O" && b5.innerText == "O" && b6.innerText == "O"){
+                g = 1;
+                d.style.display="block";d.style.color = "brown";d.innerText = "الكمبيوتر فاز";
+                c.innerText = parseInt(c.innerText) + 1;
+                re();
+            }
+            else if(b7.innerText == "X" && b8.innerText == "X" && b9.innerText == "X"){
+                g = 1;
+                d.style.display="block";d.style.color = "darkblue";d.innerText = "انت فزت";
+                you.innerText = parseInt(you.innerText) + 1;
+                re();
+            }
+            else if(b7.innerText == "O" && b8.innerText == "O" && b9.innerText == "O"){
+                g = 1;
+                d.style.display="block";d.style.color = "brown";d.innerText = "الكمبيوتر فاز";
+                c.innerText = parseInt(c.innerText) + 1;
+                re();
+            }
+            else if(b1.innerText == "X" && b4.innerText == "X" && b7.innerText == "X"){
+                g = 1;
+                d.style.display="block";d.style.color = "darkblue";d.innerText = "انت فزت";
+                you.innerText = parseInt(you.innerText) + 1;
+                re(); 
+            }
+            else if(b1.innerText == "O" && b4.innerText == "O" && b7.innerText == "O"){
+                g = 1;
+                d.style.display="block";d.style.color = "brown";d.innerText = "الكمبيوتر فاز";
+                c.innerText = parseInt(c.innerText) + 1;
+                re();  
+            }
+            else if(b2.innerText == "X" && b5.innerText == "X" && b8.innerText == "X"){
+                g = 1;
+                d.style.display="block";d.style.color = "darkblue";d.innerText = "انت فزت";
+                you.innerText = parseInt(you.innerText) + 1;
+                re();
+            }
+            else if(b2.innerText == "O" && b5.innerText == "O" && b8.innerText == "O"){
+                g = 1;
+                d.style.display="block";d.style.color = "brown";d.innerText = "الكمبيوتر فاز";
+                c.innerText = parseInt(c.innerText) + 1;
+                re(); 
+            }
+            else if(b3.innerText == "X" && b6.innerText == "X" && b9.innerText == "X"){
+                g = 1;
+                d.style.display="block";d.style.color = "darkblue";d.innerText = "انت فزت";
+                you.innerText = parseInt(you.innerText) + 1;
+                re();  
+            }
+            else if(b3.innerText == "O" && b6.innerText == "O" && b9.innerText == "O"){
+                g = 1;
+                d.style.display="block";d.style.color = "brown";d.innerText = "الكمبيوتر فاز";
+                c.innerText = parseInt(c.innerText) + 1;
+                re();  
+            }
+            else if(b1.innerText == "X" && b5.innerText == "X" && b9.innerText == "X"){
+                g = 1;
+                d.style.display="block";d.style.color = "darkblue";d.innerText = "انت فزت";
+                you.innerText = parseInt(you.innerText) + 1;
+                re();   
+            }
+            else if(b1.innerText == "O" && b5.innerText == "O" && b9.innerText == "O"){
+                g = 1;
+                d.style.display="block";d.style.color = "brown";d.innerText = "الكمبيوتر فاز";
+                c.innerText = parseInt(c.innerText) + 1;
+                re();   
+            }
+            else if(b3.innerText == "X" && b5.innerText == "X" && b7.innerText == "X"){
+                g = 1;
+                d.style.display="block";d.style.color = "darkblue";d.innerText = "انت فزت";
+                you.innerText = parseInt(you.innerText) + 1;
+                re();   
+            }
+            else if(b3.innerText == "O" && b5.innerText == "O" && b7.innerText == "O"){
+                g = 1;
+                d.style.display="block";d.style.color = "brown";d.innerText = "الكمبيوتر فاز";
+                c.innerText = parseInt(c.innerText) + 1;
+                re();  
+            }
+            else if(b1.innerText != "" && b2.innerText != "" && b3.innerText != "" && b4.innerText != "" && b5.innerText != "" && b6.innerText != "" && b7.innerText != "" && b8.innerText != "" && b9.innerText != ""){
+                g = 1;
+                d.style.display="block";d.style.color = "yellow";d.innerText = "تعادل";
+                q.innerText = parseInt(q.innerText) + 1;
+                sessionStorage.setItem("equal",q.innerText);
+                re();
+            }
+        }, 100);
+    </script>
+</body>
+</html>
+
+
+
+
+
